@@ -1,0 +1,22 @@
+layout:     post
+title:      实用代码块
+subtitle:   各种java代码块
+date:       2018-04-08
+author:     BY
+header-img: img/title22.jpg
+catalog: true
+tags:
+    - java
+---
+
+##  前言
+
+以前自己总是把一些工作和学习中感悟到的和学到的写在文档里(太懒了),电脑重装了,笔记就没了.现在开始写在博客里吧!
+
+##  正文
+
+###  java读取properties文件
+* properties
+![image](http://upload-images.jianshu.io/upload_images/11543259-43626c03f661aa07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+* java
+![image](http://upload-images.jianshu.io/upload_images/11543259-51716342b50f424f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
