@@ -99,11 +99,11 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "WY",
-        href: "http://zhengwuyang.com"
+        title: "RX",
+        href: "http://luckmen.cn"
     },{
-        title: "简书·BY",
-        href: "http://www.jianshu.com/u/e71990ada2fd"
+        title: "简书·RX",
+        href: "https://www.jianshu.com/users/bc503c957d39/timeline"
     },{
         title: "Apple",
         href: "https://apple.com"
