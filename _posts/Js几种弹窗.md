@@ -31,13 +31,13 @@ window.alert("欢迎！请按“确定”继续。");
 
 使用确认消息框可向用户问一个“是-或-否”问题，并且用户可以选择单击“确定”按钮或者单击“取消”按钮。confirm 方法的返回值为 true 或 false。该消息框也是模式对话框：用户必须在响应该对话框（单击一个按钮）将其关闭后，才能进行下一步操作。 
 
-var truthBeTold = window.confirm("单击“确定”继续。单击“取消”停止。"); 
+    var truthBeTold = window.confirm("单击“确定”继续。单击“取消”停止。"); 
 
-if (truthBeTold) { 
+    if (truthBeTold) { 
 
-window.alert("欢迎访问我们的 Web 页！"); 
+    window.alert("欢迎访问我们的 Web 页！"); 
 
-} else window.alert("再见啦！"); 
+    } else window.alert("再见啦！"); 
 
 提示消息框 
 
@@ -51,75 +51,49 @@ window.confirm 参数就只有一个.显示提示框的信息.
 
 按确定,返回true; 按取消返回false. 
 
-<script> 
+    <script> 
 
-var bln = window.confirm("确定吗?");
+    var bln = window.confirm("确定吗?");
 
-alert(bln) 
+    alert(bln) 
 
-</script> 
+    </script> 
 
 
 window.alert参数,只有一个,显示警告框的信息; 
 
 无返回值. 
-
-<script> 
-
-window.alert("确定.") 
-
-</script> 
+    <script> 
+    window.alert("确定.") 
+    </script> 
 
 window.prompt参数,有两个, 
-
 第一个参数,显示提示输入框的信息. 
-
 第二个参数,用于显示输入框的默认值. 
-
 返回,用户输入的值. 
 
- <script>   
- 
- var str = window.prompt("请输入密码","password")   
- 
- alert(str);   
- 
- </script>   
+    <script> 
+    var str = window.prompt("请输入密码","password") 
+    alert(str); 
+    </script>  
 
-<html>  
-
-<head>  
-
-<title></title>  
-
-</head>  
-
-<script language="javascript" type="text/javascript">  
-
-    var yanzhengma = window.prompt("输入验证码", "")  
-    
-    if( yanzhengma == 123 )  
-    
-    {  
-    
-        alert("ok");  
-        
-    }  
-    
-    else  
-    
-    {  
-    
-        alert("false");  
-        
-    }  
-    
-</script>  
-
-<body>  
- 
-</body>  
-
-</html>
+    <html>
+    <head>
+    <title></title>
+    </head>
+    <script language="javascript" type="text/javascript">
+    var yanzhengma = window.prompt("输入验证码", "")
+    if( yanzhengma == 123 )
+    {
+        alert("ok");
+    }
+    else
+    {
+        alert("false");
+    }
+    </script>
+    <body>
+    </body>
+    </html>
 
 
