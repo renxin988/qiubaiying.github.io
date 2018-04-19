@@ -207,46 +207,66 @@ iptables 防火墙（centos6.5及其以前）运行命令
 ### Centos 安装Tomcat
 
 #### a.下载tomcat linux的包，地址：[http://tomcat.apache.org/download-80.cgi](http://tomcat.apache.org/download-80.cgi)，我们下载的版本是8.0，下载方式如图：
+
 ![](https://images2015.cnblogs.com/blog/359161/201512/359161-20151207115357730-1218185959.png)
 
 b.因为tomcat的安装依赖于Java jdk，所以我们需要在判断linux系统下面是否安装jdk
 
 　　　　b.1 使用（Xshell）连接到Linux系统下面
 
-　　　　b.2 输入命令：java -version，如果显示jdk版本号，则证明已经安装，如果不显示，则证明没有安装，如果没有安装，请参考下面地址进行安装：[http://www.cnblogs.com/hanyinglong/p/5025635.html](http://www.cnblogs.com/hanyinglong/p/5025635.html) ，如图所示：
+　　　　b.2 输入命令：java -version，如果显示jdk版本号，则证明已经安装，如果不显示，则证明没有安装，如果没有安装，请参考下面地址进行安装：[http://www.cnblogs.com/hanyinglong/p/5025635.html](http://www.cnblogs.com/hanyinglong/p/5025635.html) ，
+如图所示：
 
 ![](https://images2015.cnblogs.com/blog/359161/201512/359161-20151207114836277-1490667290.png)
 
 a.通过上面准备工作之后，我们现在已经拥有了可以安装和发布的环境，如果没有，请自行查询安装。
-　　b.然后在Xshell中使用命令跳转到local下面创建者自己的文件夹：kencery
+
+b.然后在Xshell中使用命令跳转到local下面创建者自己的文件夹：kencery
+```
 　　　　b.1  cd usr/local/   mkdir kencery   cd kencery/
-　　c.然后使用Xftp将tomcat复制到kencery文件夹下面，如图所示：
+```
+    
+c.然后使用Xftp将tomcat复制到kencery文件夹下面，如图所示：
+
 ![](https://images2015.cnblogs.com/blog/359161/201512/359161-20151207115036668-797378328.png)
 
 d.将上传的Tomcat8.0解压，解压之后重命名为tomcat，如图所示：
+```
 　　　　d.1 tar -zxv -f apache-tomcat-8.0.29.tar.gz 
 　　　　d.2 mv apache-tomcat-8.0.29 tomcat
 　　　　d.3 cd tomcat
+```
+
 ![](https://images2015.cnblogs.com/blog/359161/201512/359161-20151207115438246-592817034.png)
 
 e.解析完成后即可以启动Tomcat，检查是否安装成功，命令如下，如图所示：
-　　　　/usr/local/kencery/tomcat/bin/startup.sh
+　　　　`/usr/local/kencery/tomcat/bin/startup.sh`
 　　　　
 ![](https://images2015.cnblogs.com/blog/359161/201512/359161-20151207115129418-1148488543.png)
 
 出现如图上所示的信息，则表示启动成功。这时候我们可以在windows下面使用http://ip:8080访问，如能够显示Tomcat的主页，则表示不需要进行任何操作了，如不能显示，则需要在Linux中开放防火墙的8080端口。
-　　f.在Linux下面的防火墙里面开放8080端口 会用命令如下：
-　　　　f.1  vim /etc/sysconfig/iptables
+
+f.在Linux下面的防火墙里面开放8080端口 会用命令如下：
+　　　　`f.1  vim /etc/sysconfig/iptables`
+    
 　　　　f.2  打开之后按键盘（i）进入编辑模式，写入开发8080端口，如图所示：
+    
 ![](https://images2015.cnblogs.com/blog/359161/201512/359161-20151207115156699-845018622.png)
+
 f.3  写完之后我们按键盘（ESC）按钮退出，然后按（:wq）保存并且关闭Vim。
+
 　　g.之后重启防火墙,命令如下：
-　　　　service iptables restart 
+　　　　`service iptables restart`
+    
 　　h.然后再次在浏览器中输入http://ip:8080，如果看到tomcat系统界面，说明安装成功，你可以进行下一步了。
-　　i.停止Tomcat的命令是：/usr/local/tomcat/bin/shutdown.sh
+  
+　　i.停止Tomcat的命令是：`/usr/local/tomcat/bin/shutdown.sh`
+  
 #### Linux中设置tomcat的服务器启动和关闭
+
 a.如2所示，我们已经完成了对tomcat的安装，接下来就可以部署项目，但是这里存在一个问题，那就是Linux的系统和重启我们每次都需要接路径并且执行命令，那么我们可以设置成service的形式来实现这个功能。
-　　b.执行命令：vim /etc/rc.d/init.d/tomcat，创建脚本文件，在文件中写入如下代码，保存并且退出
+
+b.执行命令：`vim /etc/rc.d/init.d/tomcat`，创建脚本文件，在文件中写入如下代码，保存并且退出
 
 ```
 #!/bin/bash
