@@ -204,9 +204,9 @@ iptables 防火墙（centos6.5及其以前）运行命令
 登陆数据库
 >`# mysql -u root -p`
 
-###Centos 安装Tomcat
+### Centos 安装Tomcat
 
-####a.下载tomcat linux的包，地址：[http://tomcat.apache.org/download-80.cgi](http://tomcat.apache.org/download-80.cgi)，我们下载的版本是8.0，下载方式如图：
+#### a.下载tomcat linux的包，地址：[http://tomcat.apache.org/download-80.cgi](http://tomcat.apache.org/download-80.cgi)，我们下载的版本是8.0，下载方式如图：
 ![](https://images2015.cnblogs.com/blog/359161/201512/359161-20151207115357730-1218185959.png)
 
 b.因为tomcat的安装依赖于Java jdk，所以我们需要在判断linux系统下面是否安装jdk
@@ -244,7 +244,7 @@ f.3  写完之后我们按键盘（ESC）按钮退出，然后按（:wq）保存
 　　　　service iptables restart 
 　　h.然后再次在浏览器中输入http://ip:8080，如果看到tomcat系统界面，说明安装成功，你可以进行下一步了。
 　　i.停止Tomcat的命令是：/usr/local/tomcat/bin/shutdown.sh
-####Linux中设置tomcat的服务器启动和关闭
+#### Linux中设置tomcat的服务器启动和关闭
 a.如2所示，我们已经完成了对tomcat的安装，接下来就可以部署项目，但是这里存在一个问题，那就是Linux的系统和重启我们每次都需要接路径并且执行命令，那么我们可以设置成service的形式来实现这个功能。
 　　b.执行命令：vim /etc/rc.d/init.d/tomcat，创建脚本文件，在文件中写入如下代码，保存并且退出
 
@@ -292,24 +292,30 @@ exit $RETVAL
 Linux
 ```
 c.给文件添加权限，使得脚本文件可以执行，命令为  chmod 755 /etc/rc.d/init.d/tomcat
-　　d.将其添加到服务中，命令为 chkconfig --add /etc/rc.d/init.d/tomcat
-　　e.然后将下面的配置文件加到tomcat中的catalina.sh文件中的最后面，命令为：vim /usr/local/kencery/tomcat/bin/catalina.sh
+
+d.将其添加到服务中，命令为 chkconfig --add /etc/rc.d/init.d/tomcat
+  
+e.然后将下面的配置文件加到tomcat中的catalina.sh文件中的最后面，命令为：vim /usr/local/kencery/tomcat/bin/catalina.sh
+  
 　　　　export JAVA_HOME=/usr/local/kencery/javajdk   #javajdk的安装路径，使用echo $JAVA_HOME命令可以读取
 　　　　export CATALINA_HOME=/usr/local/kencery/tomcat
 　　　　export CATALINA_BASE=/usr/local/kencery/tomcat
 　　　　export CATALINA_TMPDIR=/usr/local/kencery/tomcat/temp
-　　f.以上所有工作顺利进行并且没有报错，则配置完成，你可以输入命令service tomcat start和service tomcat stop进行验证(请自行实验)。
-####4.Linux中设置tomcat的开机启动
+    
+f.以上所有工作顺利进行并且没有报错，则配置完成，你可以输入命令service tomcat start和service tomcat stop进行验证(请自行实验)。
+#### 4.Linux中设置tomcat的开机启动
 a. 通过第三步的设置我们可以很方便的设置tomcat的启动和关闭，但是这里存在一个问题，那就是当服务器关机重启的时候，服务不能随计算机的启动而自己启动，那么我们可以将tomcat服务设置为开机启动。
-　　b.打开linux设置开启启动的文件，将下面的配置文件写入此文件的最后，命令为：vim /etc/rc.d/rc.local
+b.打开linux设置开启启动的文件，将下面的配置文件写入此文件的最后，命令为：vim /etc/rc.d/rc.local
+
 　　　　export JAVA_HOME=/usr/local/kencery/javajdk
 　　　　export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 　　　　export PATH=$PATH:$JAVA_HOME/bin
 　　　　export CATALINA_HOME=/usr/local/kencery/tomcat/
 　　　　#tomcat自启动
 　　　　/usr/local/kencery/tomcat/bin/startup.
-　　c.tomcat依赖于Java的jdk，所以设置的时候讲jdk也同步导入。
-　　d.完成上面的步骤之后我们就可以将centos关机重启检查一番。
+    
+c.tomcat依赖于Java的jdk，所以设置的时候讲jdk也同步导入。
+d.完成上面的步骤之后我们就可以将centos关机重启检查一番。
 #### 最后配置server.xml 增加utf-8编码
 ```
  <Connector URIEncoding="UTF-8" port="8080" protocol="HTTP/1.1"
