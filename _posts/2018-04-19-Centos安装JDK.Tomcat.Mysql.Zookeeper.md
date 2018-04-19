@@ -7,7 +7,8 @@ author:     RX
 header-img: img/post-bg-ioses.jpg
 catalog: true
 tags:
-    - Blog
+    - Linux,
+   - 配置环境
 ---
 
 ## Centos 7 安装 tomcat7, jdk,mysql,zookeeper
