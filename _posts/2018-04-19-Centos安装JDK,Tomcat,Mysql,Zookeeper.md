@@ -315,24 +315,34 @@ c.给文件添加权限，使得脚本文件可以执行，命令为  chmod 755 
 
 d.将其添加到服务中，命令为 chkconfig --add /etc/rc.d/init.d/tomcat
   
-e.然后将下面的配置文件加到tomcat中的catalina.sh文件中的最后面，命令为：vim /usr/local/kencery/tomcat/bin/catalina.sh
-  
-　　　　export JAVA_HOME=/usr/local/kencery/javajdk   #javajdk的安装路径，使用echo $JAVA_HOME命令可以读取
-　　　　export CATALINA_HOME=/usr/local/kencery/tomcat
-　　　　export CATALINA_BASE=/usr/local/kencery/tomcat
-　　　　export CATALINA_TMPDIR=/usr/local/kencery/tomcat/temp
-    
-f.以上所有工作顺利进行并且没有报错，则配置完成，你可以输入命令service tomcat start和service tomcat stop进行验证(请自行实验)。
-#### 4.Linux中设置tomcat的开机启动
-a. 通过第三步的设置我们可以很方便的设置tomcat的启动和关闭，但是这里存在一个问题，那就是当服务器关机重启的时候，服务不能随计算机的启动而自己启动，那么我们可以将tomcat服务设置为开机启动。
-b.打开linux设置开启启动的文件，将下面的配置文件写入此文件的最后，命令为：vim /etc/rc.d/rc.local
+e.然后将下面的配置文件加到tomcat中的catalina.sh文件中的最后面，命令为：
 
-　　　　export JAVA_HOME=/usr/local/kencery/javajdk
-　　　　export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-　　　　export PATH=$PATH:$JAVA_HOME/bin
-　　　　export CATALINA_HOME=/usr/local/kencery/tomcat/
-　　　　#tomcat自启动
-　　　　/usr/local/kencery/tomcat/bin/startup.
+>vim /usr/local/kencery/tomcat/bin/catalina.sh
+
+```
+export JAVA_HOME=/usr/local/kencery/javajdk  #javajdk的安装路径，使用echo $JAVA_HOME命令可以读取
+export CATALINA_HOME=/usr/local/kencery/tomcat
+export CATALINA_BASE=/usr/local/kencery/tomcat
+export CATALINA_TMPDIR=/usr/local/kencery/tomcat/temp
+``` 
+f.以上所有工作顺利进行并且没有报错，则配置完成，你可以输入命令service tomcat start和service tomcat stop进行验证(请自行实验)。
+
+#### 4.Linux中设置tomcat的开机启动
+
+a. 通过第三步的设置我们可以很方便的设置tomcat的启动和关闭，但是这里存在一个问题，那就是当服务器关机重启的时候，服务不能随计算机的启动而自己启动，那么我们可以将tomcat服务设置为开机启动。
+
+b.打开linux设置开启启动的文件，将下面的配置文件写入此文件的最后，命令为：
+
+>vim /etc/rc.d/rc.local`
+
+```
+export JAVA_HOME=/usr/local/kencery/javajdk
+export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$PATH:$JAVA_HOME/bin
+export CATALINA_HOME=/usr/local/kencery/tomcat/
+#tomcat自启动
+/usr/local/kencery/tomcat/bin/startup.
+```
     
 c.tomcat依赖于Java的jdk，所以设置的时候讲jdk也同步导入。
 d.完成上面的步骤之后我们就可以将centos关机重启检查一番。
