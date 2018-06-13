@@ -1,0 +1,43 @@
+---
+layout:     post
+title:      js
+subtitle:  JS,ajax
+date:       2018-04-19
+author:     RX
+header-img: img/post-bg-ioses.jpg
+catalog: true
+tags:
+    -JX
+    -ajax
+---
+
+## AJAX
+> ajax
+  $(function () {
+    $('#login').click(function () {
+        debugger;
+        var data = {};
+        data['username'] = $('#username').val();
+        data['password'] = $('#password').val();
+        if (data.username == '' || data.password==''){
+            $("#msg1").html("用户名.密码不能为空");
+        }else{
+            $.ajax({
+                url:"user/login.action",
+                type:"POST",
+                data: data,
+                success:function (result) {
+                    if(result.message == "success"){
+                        window.location.href = 'index.html';
+                    }else{
+                        alert("账号或密码不正确");
+                    }
+                },
+                error: function () {
+                    alert("后台错误");
+                }
+            })
+        }
+
+    })
+})
